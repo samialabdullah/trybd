@@ -1,0 +1,64 @@
+﻿@using Manero.ViewModels;
+
+@{
+    var CategoryPage = new NavbarViewModel()
+            {
+                Burger = false,
+                MiddleData = "Search",
+                ShoppingCart = true
+            };
+}
+
+<partial name="/Views/Partials/NavbarPartials/_TopNavbarPartial.cshtml" model="CategoryPage" />
+
+
+
+
+<section class="shop-by-category ">
+    <div class="container">
+        <div class="section-title">
+            <h2>Search by category</h2>
+        </div>
+
+        <div class="list-part">
+            <div class="container">
+                <div class="icon-path">
+                    <a asp-controller="WishList" asp-action="Index"><i>Men</i></a>
+                    <a asp-controller="WishList" asp-action="Index"><i>Women</i></a>
+                    <a asp-controller="WishList" asp-action="Index"><i>kids</i></a>
+                    <a asp-controller="WishList" asp-action="Index"><i>Accessories</i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <a asp-controller="WishList" asp-action="Index" id="category-box-1" class="category-box">
+                <div class="category-box-title">
+                    Dresses
+                </div>
+            </a>
+            <a asp-controller="WishList" asp-action="Index" id="category-box-2" class="category-box">
+                <div class="category-box-title">
+                    Pants
+                </div>
+            </a>
+
+            <a asp-controller="WishList" asp-action="Index" id="category-box-3" class="category-box">
+                <div class="category-box-title">
+                    Accessories
+                </div>
+            </a>
+            <a asp-controller="WishList" asp-action="Index" id="category-box-4" class="category-box">
+                <div class="category-box-title">
+                    Shoes
+                </div>
+            </a>
+            <a asp-controller="WishList" asp-action="Index" id="category-box-5" class="category-box">
+                <div class="category-box-title">
+                    T-shirts
+                </div>
+            </a>
+        </div>
+
+    </div>
+</section>

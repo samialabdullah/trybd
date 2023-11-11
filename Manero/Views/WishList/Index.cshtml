@@ -1,0 +1,84 @@
+﻿@using Manero.ViewModels;
+@using Manero.Services;
+@model Manero.ViewModels.CardGridViewModel
+
+@inject ProductsService productService
+
+
+@{
+    var products = productService.GetProducts();
+
+
+    //Different top navbars
+    var HomePage = new NavbarViewModel()
+            {
+                Burger = false,
+                MiddleData = "WISH LIST",
+                ShoppingCart = true
+            };
+}
+
+
+<partial name="/Views/Partials/NavbarPartials/_TopNavbarPartial.cshtml" model="HomePage" />
+
+<section class="best_sellers_section_v2 mb-5">
+    <div class="container">
+
+
+
+        <!-- Flex with limited amount -->
+        <div class="small_card_flex mt-5">
+
+
+
+            @foreach (var product in products)
+            {
+
+                <!-- start of card -->
+                <div class="small_product_card">
+                    <div class="card_left">
+
+                        <!-- can be changed, between classes:
+                                "card_tag_new, card_tag_sale and card_tag_top".
+                            see the options below -->
+                            <div class="card_tag"></div>
+                        
+
+                        <img src="@product.ImageUrl" alt="product">
+                    </div>
+                    <div class="card_right">
+                        @* Should later go to individual shopping cards site... *@
+                        <a asp-controller="Products" asp-action="@(product.ProductName)" class="card_title">@product.ProductName </a>
+                        <div class="card_price">
+                            <p>£@product.Price</p>
+                            <p>£@product.SalePrice</p>
+                        </div>
+                        <div class="card_rating">
+                            <div class="card_stars">
+
+                                @for (int i = 0; i < product.Rating; i++)
+                                {
+                                    <a href=""><i class="fa-solid fa-star" style="color: #fbee00;"></i></a>
+                                }
+
+                                @for (int i = 0; i < (5 - product.Rating); i++)
+                                {
+                                    <a href=""><i class="fa-thin fa-star" style="color: #fbee00;"></i></a>
+
+                                }
+
+                            </div>
+                            <p>(3)</p>
+                        </div>
+                    </div>
+                    <div class="small_card_options">
+                        <a asp-controller="Wishlist" asp-action="Index"><i class="fa-solid fa-heart" style="color:red;"></i></a>
+                        <a asp-controller="Order" asp-action="Index"><i class="fa-regular fa-bag-shopping"></i></a>
+                    </div>
+                </div>
+                <!-- end of card -->
+            }
+
+        </div>
+    </div>
+</section>

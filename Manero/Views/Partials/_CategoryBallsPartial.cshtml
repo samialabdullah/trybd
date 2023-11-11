@@ -1,0 +1,31 @@
+﻿@using Manero.Services;
+
+@*Shouldnt be a static list of course ^^ *@
+
+@inject ProductsService productService
+
+@{
+    var allCategories = productService.GetAllCategories();
+}
+
+
+<section class="category_section mt-3">
+    <div class="container">
+        <div class="category_balls">
+
+            @if(allCategories != null)
+            {
+                @foreach (var category in allCategories)
+                {
+                    <a asp-controller="Category" asp-action="@category.CategoryName" class="category_ball m-3">
+                        <div class="category_image">
+                            <img src="/static-images/stock-images/stock1.webp" alt="category image">
+                        </div>
+                        <p>@category.CategoryName</p>
+                    </a>
+                }
+            }
+
+        </div>
+    </div>
+</section>

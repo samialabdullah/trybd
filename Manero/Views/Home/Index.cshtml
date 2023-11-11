@@ -1,0 +1,115 @@
+﻿@using Manero.ViewModels;
+
+
+@{
+    ViewData["Title"] = "Manero - Home";
+
+//For the banners
+    var bannerRight = new BannerViewModel()
+        {
+            Title = "Take 50% off now!",
+            ButtonLink = "Sale",
+            ButtonText = "SHOP SALES",
+            FlexSide = "right"
+        };
+
+    var bannerMid = new BannerViewModel()
+            {
+                Title = "See the new arrivals",
+                ButtonLink = "New",
+                ButtonText = "NEW PRODUCTS",
+                FlexSide = "left"
+            };
+
+    var bannerLeft = new BannerViewModel()
+        {
+            Title = "Look at the top sellers",
+            ButtonLink = "Top",
+            ButtonText = "TOP SALES",
+            FlexSide = "right"
+        };
+
+
+//Card grids
+    var fancySetting = new CardGridViewModel()
+            {
+                Title = "Fancy shoes",
+                ButtonLink = "Shoes",
+                ButtonText = "Shoep now",
+                CardNr = 7
+            };
+
+    var bestSellers = new CardGridViewModel()
+            {
+                Title = "Featured products",
+                ButtonLink = "products",
+                ButtonText = "View all",
+                CardNr = 6
+            };
+
+    var featuredProducts = new CardGridViewModel()
+            {
+                Title = "All Dresses",
+                ButtonLink = "Dresses",
+                ButtonText = "Dress me",
+                CardNr = 9
+            };
+
+    var newProducts = new CardGridViewModel()
+            {
+                Title = "New designs",
+                ButtonLink = "New",
+                ButtonText = "get them first",
+                CardNr = 5
+            };
+
+
+//Different top navbars
+    var HomePage = new NavbarViewModel()
+            {
+                Burger = true,
+                MiddleData = "Manero",
+                ShoppingCart = true
+
+            };
+
+
+    var SearchPage = new NavbarViewModel()
+            {
+                Burger = true,
+                MiddleData = "Search",
+                ShoppingCart = true
+
+            };
+
+    var TitlePage = new NavbarViewModel()
+            {
+                Burger = false,
+                MiddleData = "Best sellers",
+                ShoppingCart = true
+
+            };
+}
+
+<partial name="/Views/Partials/NavbarPartials/_TopNavbarPartial.cshtml" model="HomePage" />
+
+<partial name="/Views/Partials/_ShowcasePartial.cshtml" />
+
+<partial name="/Views/Partials/Card-Partials/_BestSellersPartial.cshtml" model="@bestSellers" />
+
+<partial name="/Views/Partials/Site-Dividers/_BannerPartial.cshtml" model="@bannerLeft" />
+
+<partial name="/Views/Partials/Card-Partials/_FeaturedProductsPartial.cshtml" model="@featuredProducts" />
+
+<partial name="/Views/Partials/Site-Dividers/_BannerPartial.cshtml" model="@bannerMid" />
+
+<partial name="/Views/Partials/_CategoryBallsPartial.cshtml" model="@fancySetting" />
+
+<partial name="/Views/Partials/Card-Partials/_FeaturedProductsPartialV2.cshtml" model="@newProducts" />
+
+<partial name="/Views/Partials/Site-Dividers/_BannerPartial.cshtml" model="@bannerRight" />
+
+<partial name="/Views/Partials/Card-Partials/_BestSellersPartialV2.cshtml" model="@fancySetting" />
+
+
+
